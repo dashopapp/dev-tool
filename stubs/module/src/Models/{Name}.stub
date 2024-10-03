@@ -1,0 +1,22 @@
+<?php
+
+namespace {Module}\Models;
+
+use Dashopapp\Base\Casts\SafeContent;
+use Dashopapp\Base\Enums\BaseStatusEnum;
+use Dashopapp\Base\Models\BaseModel;
+
+class {Name} extends BaseModel
+{
+    protected $table = '{names}';
+
+    protected $fillable = [
+        'name',
+        'status',
+    ];
+
+    protected $casts = [
+        'status' => BaseStatusEnum::class,
+        'name' => SafeContent::class,
+    ];
+}

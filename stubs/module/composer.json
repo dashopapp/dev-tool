@@ -1,0 +1,19 @@
+{
+    "name": "dashopapp/{-name}",
+    "description": "{Name} package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Dashopapp\\{Name}\\": "src"
+        }
+    },
+    "require": {
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dashopapp\\{Name}\\Providers\\{Name}ServiceProvider"
+            ]
+        }
+    }
+}

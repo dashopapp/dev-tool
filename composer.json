@@ -1,0 +1,42 @@
+{
+    "name": "dashopapp/dev-tool",
+    "description": "Dev tool commands for Dashopapp CMS",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "dashopapp",
+        "dashopapp cms",
+        "dashopapp platform",
+        "dashopapp dev tools"
+    ],
+    "homepage": "https://dashopapp.com",
+    "authors": [
+        {
+            "name": "Dashopapp Technologies",
+            "email": "contact@dashopapp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dashopapp\\DevTool\\": "src"
+        }
+    },
+    "require": {
+        "laravel/framework": "^10.31|^11.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.4.0",
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dashopapp\\DevTool\\Providers\\DevToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

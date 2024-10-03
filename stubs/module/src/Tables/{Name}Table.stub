@@ -1,0 +1,54 @@
+<?php
+
+namespace {Module}\Tables;
+
+use {Module}\Models\{Name};
+use Dashopapp\Table\Abstracts\TableAbstract;
+use Dashopapp\Table\Actions\DeleteAction;
+use Dashopapp\Table\Actions\EditAction;
+use Dashopapp\Table\BulkActions\DeleteBulkAction;
+use Dashopapp\Table\BulkChanges\CreatedAtBulkChange;
+use Dashopapp\Table\BulkChanges\NameBulkChange;
+use Dashopapp\Table\BulkChanges\StatusBulkChange;
+use Dashopapp\Table\Columns\CreatedAtColumn;
+use Dashopapp\Table\Columns\IdColumn;
+use Dashopapp\Table\Columns\NameColumn;
+use Dashopapp\Table\Columns\StatusColumn;
+use Dashopapp\Table\HeaderActions\CreateHeaderAction;
+use Illuminate\Database\Eloquent\Builder;
+
+class {Name}Table extends TableAbstract
+{
+    public function setup(): void
+    {
+        $this
+            ->model({Name}::class)
+            ->addHeaderAction(CreateHeaderAction::make()->route('{-name}.create'))
+            ->addActions([
+                EditAction::make()->route('{-name}.edit'),
+                DeleteAction::make()->route('{-name}.destroy'),
+            ])
+            ->addColumns([
+                IdColumn::make(),
+                NameColumn::make()->route('{-name}.edit'),
+                CreatedAtColumn::make(),
+                StatusColumn::make(),
+            ])
+            ->addBulkActions([
+                DeleteBulkAction::make()->permission('{-name}.destroy'),
+            ])
+            ->addBulkChanges([
+                NameBulkChange::make(),
+                StatusBulkChange::make(),
+                CreatedAtBulkChange::make(),
+            ])
+            ->queryUsing(function (Builder $query) {
+                $query->select([
+                    'id',
+                    'name',
+                    'created_at',
+                    'status',
+                ]);
+            });
+    }
+}

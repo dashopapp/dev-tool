@@ -1,0 +1,20 @@
+<?php
+
+namespace {Module}\Providers;
+
+use Dashopapp\Base\Supports\ServiceProvider;
+use Dashopapp\Base\Traits\LoadAndPublishDataTrait;
+{PluginServiceProviderImports}
+class {Name}ServiceProvider extends ServiceProvider
+{
+    use LoadAndPublishDataTrait;
+
+    public function boot(): void
+    {
+        $this
+            ->setNamespace('{types}/{-name}')
+            {PluginBootProvider}
+            {PluginRegisterLanguage}
+            {PluginRegisterDashboardMenu}
+    }
+}
